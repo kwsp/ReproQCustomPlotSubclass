@@ -1,7 +1,21 @@
-#include <fmt/core.h>
+#include <QApplication>
 #include <iostream>
 
+#include "CustomPlot.hpp"
+
+class MainWindow : public QMainWindow {
+  Q_OBJECT
+public:
+    MainWindow() : QMainWindow(), customPlot(new CustomPlot) {
+      setCentralWidget(customPlot);
+    }
+private:
+    CustomPlot customPlot;
+};
+
 int main(int argc, char *argv[]) {
-  fmt::print("Hello, world!\n");
-  return 0;
+  QApplication app(argc, argv);
+  MainWindow mainWindow;
+  mainWindow.show();
+  return QApplication::exec();
 }
