@@ -5,12 +5,13 @@ qt_standard_project_setup()
 set(CMAKE_AUTOMOC ON)
 
 
-# Manually include QCustomPlot
+### Manually include QCustomPlot
+# The portfile doesn't define CMake targets so this is how I link manually.
+# On windows, the library is called "qcustomplot2" while on mac its just "qcustomplot"
 find_path(QCUSTOMPLOT_INCLUDE_DIR qcustomplot.h PATH_SUFFIXES qcustomplot)
 if (WIN32)
     find_library(QCUSTOMPLOT_LIBRARY NAMES qcustomplot2)
     find_library(QCUSTOMPLOT_LIBRARY_DEBUG NAMES qcustomplotd2)
-
     set(QCUSTOMPLOT_LIBRARY "$<IF:$<CONFIG:Debug>,${QCUSTOMPLOT_LIBRARY_DEBUG},${QCUSTOMPLOT_LIBRARY}>")
 else ()
     find_library(QCUSTOMPLOT_LIBRARY NAMES qcustomplot)
@@ -21,6 +22,14 @@ if (QCUSTOMPLOT_INCLUDE_DIR AND QCUSTOMPLOT_LIBRARY)
 else()
     message(FATAL_ERROR "Could not find QCustomPlot")
 endif()
+
+# Per https://www.qcustomplot.com/index.php/tutorials/settingup
+# This has to be defined to use QCustomPlot as a shared library.
+# However, not defining it only breaks build on Windows.
+# Ideally, this should come bundled with the portfile somehow
+add_definitions(-DQCUSTOMPLOT_USE_LIBRARY)
+
+
 
 find_package(fmt CONFIG REQUIRED)
 

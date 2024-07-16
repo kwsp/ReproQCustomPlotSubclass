@@ -10,14 +10,10 @@
       "name": "base",
       "hidden": true,
       "binaryDir": "build/${presetName}",
-<<<<<<< HEAD
       "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "cacheVariables": {
         "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/triplets"
       }
-=======
-      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
->>>>>>> template/main
     },
     {
       "name": "win64-cl-base",
@@ -35,53 +31,18 @@
       "cacheVariables": {
         "CMAKE_C_COMPILER": "cl.exe",
         "CMAKE_CXX_COMPILER": "cl.exe",
-<<<<<<< HEAD
-        "CMAKE_C_FLAGS": "/arch:AVX2 /EHsc /Qvec-report:2",
-        "CMAKE_CXX_FLAGS": "/arch:AVX2 /EHsc /Qvec-report:2",
-        "VCPKG_TARGET_TRIPLET": "x64-windows"
-=======
         "CMAKE_C_FLAGS": "/EHsc /arch:AVX2",
         "CMAKE_CXX_FLAGS": "/EHsc /arch:AVX2"
->>>>>>> template/main
       }
     },
     {
       "name": "win64",
-<<<<<<< HEAD
-      "displayName": "Win64 (Visual Studio 2022)",
-=======
       "displayName": "Visual Studio 2022",
       "description": "Visual Studio 2022 + x64 CL",
->>>>>>> template/main
       "inherits": "win64-cl-base",
       "generator": "Visual Studio 17 2022"
     },
     {
-<<<<<<< HEAD
-      "name": "ninja-multi",
-      "inherits": "base",
-      "displayName": "Ninja Multi-Config",
-      "description": "A generic Ninja Multi-Config configuration",
-      "generator": "Ninja Multi-Config"
-    },
-    {
-      "name": "clang-multi",
-      "inherits": "ninja-multi",
-      "displayName": "Ninja Multi-Config (clang)",
-      "description": "A Clang specific Ninja Multi-Config configuration",
-      "cacheVariables": {
-        "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++",
-        "CMAKE_CXX_FLAGS": "-Rpass=loop-vectorize -Rpass-missed=loop-vectorize -Rpass-analysis=loop-vectorize",
-        "CMAKE_CXX_CLANG_TIDY": "clang-tidy;--format-style=file"
-      }
-    },
-    {
-      "name": "cl-multi",
-      "inherits": ["ninja-multi", "win64-cl-base"],
-      "displayName": "Ninja Multi-Config (MSVC x64)",
-      "description": "A x64 MSVC specific Ninja Multi-Config configuration"
-=======
       "name": "ninja",
       "inherits": "base",
       "displayName": "Ninja Multi-Config",
@@ -121,7 +82,6 @@
       "cacheVariables": {
         "CMAKE_CXX_FLAGS": "/Qvec-report:2"
       }
->>>>>>> template/main
     }
   ],
   "buildPresets": [
@@ -146,59 +106,36 @@
     {
       "name": "ninja-debug",
       "displayName": "Ninja Debug",
-<<<<<<< HEAD
-      "configurePreset": "ninja-multi",
-=======
       "configurePreset": "ninja",
->>>>>>> template/main
       "configuration": "Debug"
     },
     {
       "name": "ninja-relwithdebinfo",
       "displayName": "Ninja RelWithDebInfo",
-<<<<<<< HEAD
-      "configurePreset": "ninja-multi",
-=======
       "configurePreset": "ninja",
->>>>>>> template/main
       "configuration": "RelWithDebInfo"
     },
     {
       "name": "ninja-release",
       "displayName": "Ninja Release",
-<<<<<<< HEAD
-      "configurePreset": "ninja-multi",
-=======
       "configurePreset": "ninja",
->>>>>>> template/main
       "configuration": "Release"
     },
     {
       "name": "clang-debug",
       "displayName": "Clang Debug",
-<<<<<<< HEAD
-      "configurePreset": "clang-multi",
-=======
       "configurePreset": "clang",
->>>>>>> template/main
       "configuration": "Debug"
     },
     {
       "name": "clang-relwithdebinfo",
       "displayName": "Clang RelWithDebInfo",
-<<<<<<< HEAD
-      "configurePreset": "clang-multi",
-=======
       "configurePreset": "clang",
->>>>>>> template/main
       "configuration": "RelWithDebInfo"
     },
     {
       "name": "clang-release",
       "displayName": "Clang Release",
-<<<<<<< HEAD
-      "configurePreset": "clang-multi",
-=======
       "configurePreset": "clang",
       "configuration": "Release"
     },
@@ -206,37 +143,24 @@
       "name": "clang-vec-report-release",
       "displayName": "Clang Release",
       "configurePreset": "clang-vec-report",
->>>>>>> template/main
       "configuration": "Release"
     },
     {
       "name": "cl-debug",
       "displayName": "CL Debug",
-<<<<<<< HEAD
-      "configurePreset": "cl-multi",
-=======
       "configurePreset": "cl",
->>>>>>> template/main
       "configuration": "Debug"
     },
     {
       "name": "cl-relwithdebinfo",
       "displayName": "CL RelWithDebInfo",
-<<<<<<< HEAD
-      "configurePreset": "cl-multi",
-=======
       "configurePreset": "cl",
->>>>>>> template/main
       "configuration": "RelWithDebInfo"
     },
     {
       "name": "cl-release",
       "displayName": "CL Release",
-<<<<<<< HEAD
-      "configurePreset": "cl-multi",
-=======
       "configurePreset": "cl",
->>>>>>> template/main
       "configuration": "Release"
     }
   ],
@@ -257,61 +181,37 @@
       "name": "test-ninja-debug",
       "displayName": "Test (Debug)",
       "configuration": "Debug",
-<<<<<<< HEAD
-      "configurePreset": "ninja-multi"
-=======
       "configurePreset": "ninja"
->>>>>>> template/main
     },
     {
       "name": "test-ninja-release",
       "displayName": "Test (Release)",
       "configuration": "Release",
-<<<<<<< HEAD
-      "configurePreset": "ninja-multi"
-=======
       "configurePreset": "ninja"
->>>>>>> template/main
     },
     {
       "name": "test-clang-debug",
       "displayName": "Test (Debug)",
       "configuration": "Debug",
-<<<<<<< HEAD
-      "configurePreset": "clang-multi"
-=======
       "configurePreset": "clang"
->>>>>>> template/main
     },
     {
       "name": "test-clang-release",
       "displayName": "Test (Release)",
       "configuration": "Release",
-<<<<<<< HEAD
-      "configurePreset": "clang-multi"
-=======
       "configurePreset": "clang"
->>>>>>> template/main
     },
     {
       "name": "test-cl-debug",
       "displayName": "Test (Debug)",
       "configuration": "Debug",
-<<<<<<< HEAD
-      "configurePreset": "cl-multi"
-=======
       "configurePreset": "cl"
->>>>>>> template/main
     },
     {
       "name": "test-cl-release",
       "displayName": "Test (Release)",
       "configuration": "Release",
-<<<<<<< HEAD
-      "configurePreset": "cl-multi"
-=======
       "configurePreset": "cl"
->>>>>>> template/main
     }
   ]
 }

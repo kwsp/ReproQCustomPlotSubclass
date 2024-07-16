@@ -1,21 +1,18 @@
-#include <QApplication>
-#include <iostream>
-
 #include "CustomPlot.hpp"
-
-class MainWindow : public QMainWindow {
-  Q_OBJECT
-public:
-    MainWindow() : QMainWindow(), customPlot(new CustomPlot) {
-      setCentralWidget(customPlot);
-    }
-private:
-    CustomPlot customPlot;
-};
+#include <QApplication>
+#include <QVBoxLayout>
+#include <qcustomplot.h>
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
-  MainWindow mainWindow;
-  mainWindow.show();
+
+  auto *widget = new QWidget;
+  auto *layout = new QVBoxLayout;
+  widget->setLayout(layout);
+
+  auto *customPlot = new CustomPlot;
+  layout->addWidget(customPlot);
+
+  widget->show();
   return QApplication::exec();
 }
