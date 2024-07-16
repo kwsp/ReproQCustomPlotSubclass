@@ -112,7 +112,7 @@ jobs:
 
       - name: CMake configure
         shell: bash
-        run: cmake --preset clang-multi
+        run: cmake --preset clang
 
       - name: CMake build
         shell: bash
@@ -122,6 +122,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: artifact
-          path: ${{ github.workspace }}/build/clang-multi/src/Release/main
+          path: ${{ github.workspace }}/build/clang/src/Release/main
           if-no-files-found: "warn" # output a warning if no files are found.
           overwrite: true
